@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Stampy{% endblock %}</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sanitize.css') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/htmx.org@2.0.8/dist/htmx.min.js"></script>
+
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <header class="bg-white p-6 shadow-lg">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold text-center">{{ _('Stampy') }}</h1>
+    </div>
+  </header>
+
+  <!-- メニュー -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-gray-200 shadow-2xl">
+    <ul class="max-w-4xl mx-auto flex justify-around items-center p-4">
+      <li class="inline-block text-center text-xs text-gray-700">
+        <a href="{{ url_for('routes.home') }}">
+          <img src="{{ url_for('static', filename='icons/home.svg') }}">
+          <span>{{ _('ホーム') }}</span>
+        </a>
+      </li>
+      <li class="inline-block text-center text-xs text-gray-700">
+        <a href="{{ url_for('routes.talks') }}">
+          <img src="{{ url_for('static', filename='icons/talk.svg') }}">
+          <span>{{ _('トーク') }}</span>
+        </a>
+      </li>
+      <li class="inline-block text-center text-xs text-gray-700">
+        <a href="{{ url_for('routes.settings') }}">
+          <img src="{{ url_for('static', filename='icons/setting.svg') }}">
+          <span>{{ _('設定') }}</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="p-6">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>
