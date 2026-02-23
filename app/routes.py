@@ -6,6 +6,9 @@ routes_bp = Blueprint("routes", __name__)
 @routes_bp.route("/")
 # @login_required
 def home():
+    connections = [
+        {"user_id": 1}
+    ]
     return render_template("app/home.html", user=current_user)
 
 @routes_bp.route("/talks")
