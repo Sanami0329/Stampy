@@ -5,6 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_babel import Babel, gettext as _
 
+
 db = SQLAlchemy()
 migrate = Migrate()
 
@@ -38,6 +39,8 @@ def create_app():
     migrate.init_app(app, db)
     login_manager.init_app(app)
     babel.init_app(app)
+    
+    from .models import User, Connection, Message
 
     app.jinja_env.globals['_'] = _
 

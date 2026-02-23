@@ -1,6 +1,7 @@
 from . import db
 from flask_login import UserMixin
 from datetime import datetime
+from sqlalchemy import CheckConstraint
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,12 +16,26 @@ class User(UserMixin, db.Model):
 class Connection(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    connected_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=True)
+    connected_user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=True)
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     from_user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     to_user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    stamp_id = db.Column(db.Integer, nullable=False)
+    stamp_id = db.Column(db.Integer, nullable=True)
+    scale = db.Column(db.Integer, nullable=True)
+    image_url = db.Column(db.String(255), nullable=True)
+    video_url = db.Column(db.String(255), nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    __table_args__ = (
+        CheckConstraint("scale >= 1 AND scale <= 5", name="check_scale_1_5"),
+    )
+    
+    __table_args__ = (
+        CheckConstraint(
+            "(stamp_id IS NULL AND scale IS NULL) OR (stamp_id IS NOT NULL AND scale IS NOT NULL)",
+            name="check_stamp_scale_set"
+        ),
+    )
     
