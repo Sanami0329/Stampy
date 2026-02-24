@@ -8,10 +8,19 @@ class User(UserMixin, db.Model):
     name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
+    search_id = db.Column(db.String(10), unique=True, nullable=False)
     avatar_url = db.Column(db.String(255), nullable=True)
     mood_stamp_id = db.Column(db.Integer, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
+    
+    # search_idのユニーク生成
+    def generate_unique_search_id(session, length=10):
+        while True:
+            candidate = generate_search_id(length)
+            exists = session.query(User).filter_by(search_id=candidate).first()
+            if not exists:
+                return candidate
     
     # パスワードのハッシュ化＆検証
     def set_password(self, password):

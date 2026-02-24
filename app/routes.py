@@ -8,7 +8,7 @@ routes_bp = Blueprint("routes", __name__)
 
 @routes_bp.route("/", methods=['GET'])
 def index():
-    return render_template("app/home.html")
+    return render_template("main/individual-talk.html")
 
 @routes_bp.route("/register", methods=['GET'])
 def register():
@@ -27,7 +27,7 @@ def home(user_id):
         "user": current_user,
         "friends": frieds,
     }
-    return render_template("app/home.html", **context)
+    return render_template("main/home.html", **context)
 
 
 @routes_bp.route("/talks", methods=['GET'])
@@ -52,7 +52,7 @@ def talks(user_id):
         "messages": messages,
         "talk_users": talk_users,
     }
-    return render_template("app/talks.html", **context)
+    return render_template("main/talks.html", **context)
 
 
 @routes_bp.route("/individual-talk/<int:talk_id>", methods=['GET'])
@@ -85,9 +85,9 @@ def individual_talk(user_id, talk_id):
         # encrypted_image_url=encrypted_image_url,
         # encrypted_video_url=encrypted_video_url,
     }
-    return render_template("app/individual-talk.html", **context)
+    return render_template("main/individual-talk.html", **context)
 
 
 @routes_bp.route("/settings")
 def settings():
-    return render_template("app/settings.html", user=current_user)
+    return render_template("main/settings.html", user=current_user)

@@ -1,0 +1,66 @@
+{% extends "main/base.html" %}
+{% block title %}Home{% endblock %}
+{% block page_title %}{{ _('ホーム') }}{% endblock %}
+{% block content %}
+
+<div class="w-full px-8 py-4">
+
+  <!-- myprofile -->
+  <h2 class="text-xl font-bold mb-4 text-gray-800">{{ _('自分') }}</h2>
+  <div class="bg-blue-200 rounded-3xl shadow-md py-4 px-8 mb-8">
+    <div class="flex items-center justify-between">
+      <p class="text-2xl font-bold text-gray-900">山田太郎</p>
+      <div class="flex flex-col items-center align-middle">
+        <p class="text-sm">今の気分</p>
+        <img src="{{ url_for('static', filename='icons/mood/happy.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+        <a href="#" class="text-sm text-gray-600">{{ _('変更する') }}</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- friends -->
+  <h2 class="text-xl font-bold mb-4 text-gray-800">{{ _('友達') }}</h2>
+
+  <div class="grid grid-cols-3 gap-6">
+    <div class="bg-zinc-100 rounded-3xl shadow-md p-4 flex flex-col items-center overflow-hidden">
+      <p class="w-full text-center text-xl font-bold text-gray-900 truncate">佐藤良子</p>
+      <img src="{{ url_for('static', filename='icons/mood/happy.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+      <p class="text-sm">今の気分</p>    
+    </div>
+    <div class="bg-zinc-100 rounded-3xl shadow-md p-4 flex flex-col items-center overflow-hidden">
+      <p class="w-full text-center text-xl font-bold text-gray-900 truncate">佐藤良子</p>
+      <img src="{{ url_for('static', filename='icons/mood/happy.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+      <p class="text-sm">今の気分</p>    
+    </div>
+    <div class="bg-zinc-100 rounded-3xl shadow-md p-4 flex flex-col items-center overflow-hidden">
+      <p class="w-full text-center text-xl font-bold text-gray-900 truncate">佐藤良子</p>
+      <img src="{{ url_for('static', filename='icons/mood/happy.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+      <p class="text-sm">今の気分</p>    
+    </div>
+    <div class="bg-zinc-100 rounded-3xl shadow-md p-4 flex flex-col items-center overflow-hidden">
+      <p class="w-full text-center text-xl font-bold text-gray-900 truncate">yamada michael kogorou</p>
+      <img src="{{ url_for('static', filename='icons/mood/happy.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+      <p class="text-sm">今の気分</p>    
+    </div>
+    <div class="bg-zinc-100 rounded-3xl shadow-md p-4 flex flex-col items-center overflow-hidden">
+      <p class="w-full text-center text-xl font-bold text-gray-900 truncate">田中正子</p>
+      <img src="{{ url_for('static', filename='icons/mood/happy.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+      <p class="text-sm">今の気分</p>    
+    </div>
+    <div class="bg-zinc-100 rounded-3xl shadow-md p-4 flex flex-col items-center overflow-hidden">
+      <p class="w-full text-center text-xl font-bold text-gray-900 truncate">田中正子</p>
+      <img src="{{ url_for('static', filename='icons/mood/happy.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+      <p class="text-sm">今の気分</p>    
+    </div>
+    <div class="bg-zinc-100 rounded-3xl shadow-md p-4 flex flex-col items-center overflow-hidden">
+      <p class="w-full text-center text-xl font-bold text-gray-900 truncate">田中正子</p>
+      <img src="{{ url_for('static', filename='icons/mood/happy.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+      <p class="text-sm">今の気分</p>    
+    </div>
+  </div>
+
+</div>
+
+
+
+{% endblock %}

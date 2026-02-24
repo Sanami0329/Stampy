@@ -1,0 +1,96 @@
+{% extends "main/base.html" %}
+{% block title %}Home{% endblock %}
+{% block page_title %}{{ _('トーク') }}{% endblock %}
+{% block content %}
+
+<div class="w-full px-8 py-4">
+
+  <div class="flex items-center mb-4">
+    <p class="w-1/2 flex justify-center text-lg font-bold text-gray-900">山田花子</p>
+    <p class="w-1/2 flex justify-center text-lg font-bold text-gray-900">工藤静香</p>
+  </div>
+
+  <div class="flex justify-between p-4 mb-4">
+    <div class="w-1/2 flex flex-col items-center">
+      <div class="w-full flex justify-start mb-2">
+        <p class="text-sm">2/10 10:48</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="{{ url_for('static', filename='icons/mood/happy.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+        <p class="text-sm mb-2">嬉しい</p>
+        <div class="w-24 h-6 bg-gray-200 rounded-lg mb-2">
+          <span name="scale" class="block w-1/3 h-6 bg-green-200 rounded-lg flex items-center justify-center text-center text-xs">{{ _('少し')}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="w-1/2 flex flex-col items-center">
+      <div class="w-full flex justify-end mb-2">
+        <p class="text-sm">2/10 10:48</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="{{ url_for('static', filename='stamps/read/read.png') }}" alt="既読スタンプ" class="w-10 h-10">
+        <p class="text-sm mb-2">見たよ</p>
+        <div class="mb-2">
+          <button class="border border-gray-300 text-xs px-2 py-1 rounded-md">{{ _('リアクションする')}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-between p-4 mb-4">
+    <div class="w-1/2 flex flex-col items-center">
+      <div class="w-full flex justify-start mb-2">
+        <p class="text-sm">2/10 10:48</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="{{ url_for('static', filename='icons/mood/fun.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+        <p class="text-sm mb-2">楽しい</p>
+        <div class="w-24 h-6 bg-gray-200 rounded-lg mb-2">
+          <span name="scale" class="block w-3/3 h-6 bg-green-200 rounded-lg flex items-center justify-center text-center text-xs">{{ _('とても')}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="w-1/2 flex flex-col items-center">
+      <div class="w-full flex justify-end mb-2">
+        <p class="text-sm">2/10 10:48</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="{{ url_for('static', filename='stamps/reaction/like.png') }}" alt="いいね" class="w-10 h-10">
+        <p class="text-sm mb-2">いいね</p>
+        <div class="mb-2">
+          <button class="border border-gray-300 text-xs px-2 py-1 rounded-md">{{ _('リアクションを変更')}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-between p-4 mb-4">
+    <div class="w-1/2 flex flex-col items-center">
+      <div class="w-full flex justify-start mb-2">
+        <p class="text-sm">2/10 10:48</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="{{ url_for('static', filename='stamps/read/be_read.png') }}" alt="既読スタンプ" class="w-10 h-10">
+        <p class="text-sm mb-2">見たよ</p>
+      </div>
+    </div>
+    <div class="w-1/2 flex flex-col items-center">
+      <div class="w-full flex justify-end mb-2">
+        <p class="text-sm">2/10 10:48</p>
+      </div>
+      <div class="flex flex-col items-center">
+        <img src="{{ url_for('static', filename='icons/mood/bored.svg') }}" alt="気分スタンプ" class="w-10 h-10">
+        <p class="text-sm mb-2">暇</p>
+        <div class="w-24 h-6 bg-gray-200 rounded-lg mb-2">
+          <span name="scale" class="block w-2/3 h-6 bg-green-200 rounded-lg flex items-center justify-center text-center text-xs">{{ _('普通')}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+{% endblock %}

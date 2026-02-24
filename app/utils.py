@@ -1,7 +1,14 @@
 from cryptography.fernet import Fernet
 import os
+import string, random
 
-# FERNET_KEY取得
+# ユーザー検索用のランダムID生成
+def generate_search_id(length=10):
+    chars = string.ascii_letters + string.digits
+    return ''.join(random.choices(chars, k=length))
+
+# URL暗号化
+# Fernetキー設定
 FERNET_KEY = os.environ.get("FERNET_KEY")
 # ※開発環境用にFERNET_KEYをランダム生成（本番時env設定に切り替え）
 if not FERNET_KEY:
