@@ -8,7 +8,7 @@ routes_bp = Blueprint("routes", __name__)
 
 @routes_bp.route("/", methods=['GET'])
 def index():
-    return render_template("auth/register.html")
+    return render_template("app/home.html")
 
 @routes_bp.route("/register", methods=['GET'])
 def register():

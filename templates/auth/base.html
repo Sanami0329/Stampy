@@ -20,32 +20,8 @@
     <h1 class="text-3xl font-bold p-2">{{ _('Stampy') }}</h1>
   </header>
 
-  <!-- nav menu -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-gray-200 shadow-2xl">
-    <ul class="max-w-4xl mx-auto flex justify-around items-center p-4">
-      <li class="inline-block text-center text-xs text-gray-700">
-        <a href="{{ url_for('routes.home') }}">
-          <img src="{{ url_for('static', filename='icons/app/home.svg') }}">
-          <span>{{ _('ホーム') }}</span>
-        </a>
-      </li>
-      <li class="inline-block text-center text-xs text-gray-700">
-        <a href="{{ url_for('routes.talks') }}">
-          <img src="{{ url_for('static', filename='icons/app/talk.svg') }}">
-          <span>{{ _('トーク') }}</span>
-        </a>
-      </li>
-      <li class="inline-block text-center text-xs text-gray-700">
-        <a href="{{ url_for('routes.settings') }}">
-          <img src="{{ url_for('static', filename='icons/app/setting.svg') }}">
-          <span>{{ _('設定') }}</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-
   <!-- main -->
-  <main class="min-h-[calc(100vh-4rem)] overflow-y-auto pt-24 pb-20 px-6 ">
+  <main class="min-h-[calc(100vh-4rem)] overflow-y-auto pt-24 px-6 ">
     {% block content %}{% endblock %}
   </main>
 </body>
