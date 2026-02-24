@@ -10,14 +10,6 @@ routes_bp = Blueprint("routes", __name__)
 def index():
     return render_template("main/individual-talk.html")
 
-@routes_bp.route("/register", methods=['GET'])
-def register():
-    return render_template("auth/register.html")
-
-@routes_bp.route("/login", methods=['GET', 'POST'])
-def login():
-    return render_template("auth/login.html")
-
 
 @routes_bp.route("/home", methods=['GET'])
 # @login_required

@@ -5,7 +5,7 @@ from sqlalchemy import CheckConstraint
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
+    username = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
     search_id = db.Column(db.String(10), unique=True, nullable=False)
@@ -22,11 +22,16 @@ class User(UserMixin, db.Model):
             if not exists:
                 return candidate
     
-    # パスワードのハッシュ化＆検証
+    # passwordが8文字以上であることを確認し、ハッシュ化して保存
     def set_password(self, password):
+        if len(password) < 8:
+            raise ValueError("Password too short") #raiseで例外発生＆その後の処理を中断
         self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
+    
+    # passwordの検証
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password_hash, password)
+    
 
 class Friend(db.Model):
     id = db.Column(db.Integer, primary_key=True)
