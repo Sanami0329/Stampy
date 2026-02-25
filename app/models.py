@@ -2,6 +2,8 @@ from . import db, bcrypt
 from flask_login import UserMixin
 from datetime import datetime
 from sqlalchemy import CheckConstraint
+from app.utils import generate_search_id, encrypt_url, decrypt_url
+
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -15,20 +17,21 @@ class User(UserMixin, db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     # search_idのユニーク生成
+    @staticmethod
     def generate_unique_search_id(session, length=10):
         while True:
             candidate = generate_search_id(length)
             exists = session.query(User).filter_by(search_id=candidate).first()
             if not exists:
                 return candidate
-    
+            
     # passwordが8文字以上であることを確認し、ハッシュ化して保存
     def set_password(self, password):
         if len(password) < 8:
             raise ValueError("Password too short") #raiseで例外発生＆その後の処理を中断
         self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
     
-    # passwordの検証
+    # ログイン時passwordの検証
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password_hash, password)
     

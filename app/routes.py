@@ -12,14 +12,15 @@ def index():
 
 
 @routes_bp.route("/home", methods=['GET'])
-# @login_required
-def home(user_id):
-    frieds = db.session.query(User).join(Friend, User.id == Friend.friend_id).filter(Friend.user_id == current_user.id).all()
-    context = {
-        "user": current_user,
-        "friends": frieds,
-    }
-    return render_template("main/home.html", **context)
+@login_required
+def home():
+    # frieds = db.session.query(User).join(Friend, User.id == Friend.friend_id).filter(Friend.user_id == current_user.id).all()
+    # context = {
+    #     "user": current_user,
+    #     "friends": frieds,
+    # }
+    # return render_template("main/home.html", **context)
+    return render_template("main/home.html")
 
 
 @routes_bp.route("/talks", methods=['GET'])

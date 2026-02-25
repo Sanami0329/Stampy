@@ -1,0 +1,67 @@
+{% extends "auth/base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="py-4">
+  <div class="w-full sm:w-96 mx-auto flex flex-col items-center gap-6 bg-gray-200 rounded-3xl p-8">
+    <h1 class="text-2xl font-bold text-center">ユーザー登録</h1>
+    <form class="w-full flex flex-col items-center" action="" method="POST">
+      {{ form.csrf_token }}
+      <div class="w-full space-y-4">
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+              {% for message in messages %}
+                <span class="block sm:inline">{{ message }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %} 
+
+        <!-- 名前 -->
+        <div class="flex flex-col gap-2">
+          <label for="name" class="">名前</label>
+          <input type="text" id="name" name="username" value="{{ form.username.data or '' }}" placeholder="名前を入力してください" required class="h-8 px-2">
+          {% for e in form.username.errors %}
+            <p class="text-red-500 text-sm">{{ e }}</p>
+          {% endfor %}
+        </div>
+
+        <!-- メールアドレス -->
+        <div class="flex flex-col gap-2">
+          <label for="email" class="">メールアドレス</label>
+          <input type="email" id="email" name="email" value="{{ form.email.data or '' }}"  placeholder="メールアドレスを入力してください" required class="h-8 px-2">
+          {% for e in form.email.errors %}
+            <p class="text-red-500 text-sm">{{ e }}</p>
+          {% endfor %}
+        </div>
+
+
+        <!-- パスワード -->
+        <div class="flex flex-col gap-2">
+          <label for="password" class="">パスワード</label>
+          <input type="password" id="password" name="password" value="" placeholder="パスワードを入力してください" required class="h-8 px-2">
+          {% for e in form.password.errors %}
+            <p class="text-red-500 text-sm">{{ e }}</p>
+          {% endfor %}
+        </div>
+
+        <!-- 確認用パスワード -->
+        <div class="flex flex-col gap-2">
+          <label for="password_confirm" class="">確認用パスワード</label>
+          <input type="password" id="password_confirm" name="password_confirm" value="" placeholder="もう一度パスワードを入力してください" required class="h-8 px-2">
+          {% for e in form.password_confirm.errors %}
+            <p class="text-red-500 text-sm">{{ e }}</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <button class="text-lg bg-blue-500 hover:bg-blue-700 text-white font-bold mt-10 mb-6 py-2 px-4 rounded"
+        type="submit">登録</button>
+      <a href="{{ url_for('auth.login') }}" class="text-center text-sm text-gray-500 underline hover:text-gray-700 mt-2">アカウントをお持ちの方はこちら</a>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

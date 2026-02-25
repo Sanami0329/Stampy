@@ -20,11 +20,7 @@ def create_app():
     from dotenv import load_dotenv
     load_dotenv()
     
-    app = Flask(
-        __name__,
-        template_folder="../templates",
-        static_folder="../static",
-    )
+    app = Flask(__name__)
     
     app.config["SECRET_KEY"] = os.getenv("SECRET_KEY", "dev")
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL", "sqlite:///app.db")
@@ -48,7 +44,7 @@ def create_app():
 
     #Blueprint
     from .routes import routes_bp
-    from .auth import auth_bp
+    from .auth.routes import auth_bp
     app.register_blueprint(routes_bp)
     app.register_blueprint(auth_bp)
 
