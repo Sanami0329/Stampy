@@ -2,6 +2,7 @@ from flask import Blueprint, render_template
 from flask_login import login_required, current_user
 from app.utils import encrypt_url, decrypt_url
 from sqlalchemy import desc
+from auth.forms import RegisterForm
 
 routes_bp = Blueprint("routes", __name__)
 
@@ -83,4 +84,9 @@ def individual_talk(user_id, talk_id):
 
 @routes_bp.route("/settings")
 def settings():
+    form = RegisterForm()
+    
+    
+
+
     return render_template("main/settings.html", user=current_user)

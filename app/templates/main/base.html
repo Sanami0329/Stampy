@@ -16,7 +16,7 @@
 <body class="bg-gray-100 text-gray-900">
 
   <!-- header -->
-  <header class="w-full fixed top-0 left-0 right-0 bg-blue-500 text-white py-4 px-4 sm:px-10 shadow-lg">
+  <header class="w-full z-50 fixed top-0 left-0 right-0 bg-blue-500 text-white py-4 px-4 sm:px-10 shadow-lg">
     <div class="w-full flex items-center relative">
       <h1 class="text-3xl font-bold p-2">{{ _('Stampy') }}</h1>
       <h2 class="absolute left-1/2 -translate-x-1/2 text-3xl font-bold text-center">{% block page_title %}Page title{% endblock %}</h2>
@@ -24,7 +24,7 @@
   </header>
 
   <!-- nav menu -->
-  <nav class="fixed bottom-0 left-0 right-0 bg-white border-t-4 border-gray-200 shadow-2xl">
+  <nav class="fixed z-50 bottom-0 left-0 right-0 bg-white border-t-4 border-gray-200 shadow-2xl">
     <ul class="max-w-4xl mx-auto flex justify-around items-center p-4">
       <li class="inline-block text-center text-xs text-gray-700">
         <a href="{{ url_for('routes.home') }}">
@@ -48,7 +48,7 @@
   </nav>
 
   <!-- main -->
-  <main class="min-h-screen overflow-y-auto max-w-2xl mx-auto bg-white pt-24 pb-20">
+  <main class="min-h-screen overflow-y-auto max-w-2xl mx-auto bg-white pt-24 pb-20 relative">
     {% block content %}{% endblock %}
   </main>
 </body>
